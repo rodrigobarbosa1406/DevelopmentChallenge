@@ -1,0 +1,119 @@
+{
+	"CASTELLANO": {
+		"GeometricShapes": {
+			"Square": {
+				"Singular": "Cuadrado",
+				"Plural": "Cuadrados"
+			},
+			"EquilateralTriangle": {
+				"Singular": "Triángulo",
+				"Plural": "Triángulos"
+			},
+			"Circle": {
+				"Singular": "Círculo",
+				"Plural": "Círculos"
+			},
+			"Trapeze": {
+				"Singular": "Trapecio",
+				"Plural": "Trapecios"
+			},
+			"Rectangle": {
+				"Singular": "Rectangulo",
+				"Plural": "Rectangulos"
+			}
+		},
+		"Dimensions": {
+			"Area": "Area",
+			"Perimeter": "Perimetro"
+		},
+		"Messages": {
+			"EmptyList": "Lista vacía de formas!",
+			"ReportTitle": "Reporte de formas"
+		},
+		"Words": {
+			"Total": "TOTAL",
+			"Shape": {
+				"Singular": "forma",
+				"Plural": "formas"
+			}
+		}
+	},
+	"ENGLISH": {
+		"GeometricShapes": {
+			"Square": {
+				"Singular": "Square",
+				"Plural": "Squares"
+			},
+			"EquilateralTriangle": {
+				"Singular": "Triangle",
+				"Plural": "Triangles"
+			},
+			"Circle": {
+				"Singular": "Circle",
+				"Plural": "Circles"
+			},
+			"Trapeze": {
+				"Singular": "Trapeze",
+				"Plural": "Trapezes"
+			},
+			"Rectangle": {
+				"Singular": "Rectangle",
+				"Plural": "Rectangles"
+			}
+		},
+		"Dimensions": {
+			"Area": "Area",
+			"Perimeter": "Perimeter"
+		},
+		"Messages": {
+			"EmptyList": "Empty list of shapes!",
+			"ReportTitle": "Shapes report"
+		},
+		"Words": {
+			"Total": "TOTAL",
+			"Shape": {
+				"Singular": "shape",
+				"Plural": "shapes"
+			}
+		}
+	},
+	"ITALIAN": {
+		"GeometricShapes": {
+			"Square": {
+				"Singular": "Piazza",
+				"Plural": "Piazze"
+			},
+			"EquilateralTriangle": {
+				"Singular": "Triangolo",
+				"Plural": "Triangoli"
+			},
+			"Circle": {
+				"Singular": "Cerchio",
+				"Plural": "Cerchi"
+			},
+			"Trapeze": {
+				"Singular": "Trapezio",
+				"Plural": "Trapezi"
+			},
+			"Rectangle": {
+				"Singular": "Rettangolo",
+				"Plural": "Rettangoli"
+			}
+		},
+		"Dimensions": {
+			"Area": "Zona",
+			"Perimeter": "Perimetro"
+		},
+		"Messages": {
+			"EmptyList": "Elenco moduli vuoti!",
+			"ReportTitle": "Segnalazione dei moduli"
+		},
+		"Words": {
+			"Total": "TOTALE",
+			"Shape": {
+				"Singular": "forma",
+				"Plural": "forme"
+			}
+		}
+	}
+}

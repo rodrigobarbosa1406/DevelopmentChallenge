@@ -1,92 +1,158 @@
-﻿using System;
-using System.Collections.Generic;
-using DevelopmentChallenge.Data.Classes;
+﻿using DevelopmentChallenge.Data.Classes;
+using DevelopmentChallenge.Data.Classes.GeometricShapes;
+using DevelopmentChallenge.Data.Enums;
+using DevelopmentChallenge.Data.Utils;
 using NUnit.Framework;
+using System.Collections.Generic;
 
 namespace DevelopmentChallenge.Data.Tests
 {
     [TestFixture]
     public class DataTests
     {
+        #region EmptyList
         [TestCase]
-        public void TestResumenListaVacia()
+        public void TestSummaryEmptyList()
         {
             Assert.AreEqual("<h1>Lista vacía de formas!</h1>",
-                FormaGeometrica.Imprimir(new List<FormaGeometrica>(), 1));
+                Print.PrintReport(new List<GeometricShape>(), Language.CASTELLANO));
         }
 
         [TestCase]
-        public void TestResumenListaVaciaFormasEnIngles()
+        public void TestSummaryEmptyListShapesInEnglish()
         {
             Assert.AreEqual("<h1>Empty list of shapes!</h1>",
-                FormaGeometrica.Imprimir(new List<FormaGeometrica>(), 2));
+                Print.PrintReport(new List<GeometricShape>(), Language.ENGLISH));
         }
 
         [TestCase]
-        public void TestResumenListaConUnCuadrado()
+        public void SummaryTestEmptyListFormsInItalian()
         {
-            var cuadrados = new List<FormaGeometrica> {new FormaGeometrica(FormaGeometrica.Cuadrado, 5)};
+            Assert.AreEqual("<h1>Elenco moduli vuoti!</h1>",
+                Print.PrintReport(new List<GeometricShape>(), Language.ITALIAN));
+        }
+        #endregion EmptyList
 
-            var resumen = FormaGeometrica.Imprimir(cuadrados, FormaGeometrica.Castellano);
+        #region Square
+        [TestCase]
+        public void SummaryTestListWithASquare()
+        {
+            var geometricShapes = new List<GeometricShape> { new Square(5) };    //Area: 25, Perimeter: 20
 
-            Assert.AreEqual("<h1>Reporte de Formas</h1>1 Cuadrado | Area 25 | Perimetro 20 <br/>TOTAL:<br/>1 formas Perimetro 20 Area 25", resumen);
+            var summary = Print.PrintReport(geometricShapes, Language.CASTELLANO);
+
+            Assert.AreEqual("<h1>Reporte de formas</h1>1 Cuadrado | Area 25 | Perimetro 20 <br/>TOTAL:<br/>1 forma Perimetro 20 Area 25", summary);
         }
 
         [TestCase]
-        public void TestResumenListaConMasCuadrados()
+        public void SummaryTestListWithMoreSquares()
         {
-            var cuadrados = new List<FormaGeometrica>
+            var geometricShapes = new List<GeometricShape>
             {
-                new FormaGeometrica(FormaGeometrica.Cuadrado, 5),
-                new FormaGeometrica(FormaGeometrica.Cuadrado, 1),
-                new FormaGeometrica(FormaGeometrica.Cuadrado, 3)
+                new Square(5),    //Area: 25, Perimeter: 20
+                new Square(1),    //Area: 1, Perimeter: 4
+                new Square(3)     //Area: 9, Perimeter: 12
             };
+            //TOTAL: 3 -> Area: 35, Perimeter: 36
 
-            var resumen = FormaGeometrica.Imprimir(cuadrados, FormaGeometrica.Ingles);
+            var summary = Print.PrintReport(geometricShapes, Language.ENGLISH);
 
-            Assert.AreEqual("<h1>Shapes report</h1>3 Squares | Area 35 | Perimeter 36 <br/>TOTAL:<br/>3 shapes Perimeter 36 Area 35", resumen);
+            Assert.AreEqual("<h1>Shapes report</h1>3 Squares | Area 35 | Perimeter 36 <br/>TOTAL:<br/>3 shapes Perimeter 36 Area 35", summary);
         }
 
         [TestCase]
-        public void TestResumenListaConMasTipos()
+        public void SummaryTestListWithMoreSquaresInItalian()
         {
-            var formas = new List<FormaGeometrica>
+            var geometricShapes = new List<GeometricShape>
             {
-                new FormaGeometrica(FormaGeometrica.Cuadrado, 5),
-                new FormaGeometrica(FormaGeometrica.Circulo, 3),
-                new FormaGeometrica(FormaGeometrica.TrianguloEquilatero, 4),
-                new FormaGeometrica(FormaGeometrica.Cuadrado, 2),
-                new FormaGeometrica(FormaGeometrica.TrianguloEquilatero, 9),
-                new FormaGeometrica(FormaGeometrica.Circulo, 2.75m),
-                new FormaGeometrica(FormaGeometrica.TrianguloEquilatero, 4.2m)
+                new Square(5),    //Area: 25, Perimeter: 20
+                new Square(1),    //Area: 1, Perimeter: 4
+                new Square(3)     //Area: 9, Perimeter: 12
             };
+            //TOTAL: 3 -> Area: 35, Perimeter: 36
 
-            var resumen = FormaGeometrica.Imprimir(formas, FormaGeometrica.Ingles);
+            var summary = Print.PrintReport(geometricShapes, Language.ITALIAN);
+
+            Assert.AreEqual("<h1>Segnalazione dei moduli</h1>3 Piazze | Zona 35 | Perimetro 36 <br/>TOTALE:<br/>3 forme Perimetro 36 Zona 35", summary);
+        }
+        #endregion Square
+
+        #region MoreTypes
+        [TestCase]
+        public void TestSummaryListWithMoreTypes()
+        {
+            var geometricShapes = new List<GeometricShape>
+            {
+                new Square(5),                    //Area: 25, Perimeter: 20
+                new Circle(3),                     //Area: 28.27, Perimeter: 18.85
+                new EquilateralTriangle(4),         //Area: 6.93, Perimeter: 12
+                new Square(2),                    //Area: 4, Perimeter: 8
+                new EquilateralTriangle(9),         //Area: 35.07, Perimeter: 27
+                new Circle(2.75m),                 //Area: 23.76, Perimeter: 17.28
+                new EquilateralTriangle(4.2m),      //Area: 7.64, Perimeter: 12.6
+                new Rectangle(4, 2),               //Area: 8, Perimeter: 12
+                new Trapeze(10, 6, 5, 4, 3)        //Area: 40, Perimeter: 23
+            };
+            //TOTAL_CUADRADO: 2 -> Area: 29, Perimeter: 28
+            //TOTAL_CIRCULO: 2 -> Area: 52.03, Perimeter: 36,13
+            //TOTAL_TRIANGULO: 3 -> Area: 49,64, Perimeter: 51,6
+            //TOTAL_RECTANGULO: 1 -> Area: 8, Perimeter: 12
+            //TOTAL_TRAPECIO: 1 -> Area: 40, Perimeter: 23
+
+            //TOTAL_FINAL: 9 -> Area: 178,67, Perimeter: 150,73
+
+            var summary = Print.PrintReport(geometricShapes, Language.ENGLISH);
 
             Assert.AreEqual(
-                "<h1>Shapes report</h1>2 Squares | Area 29 | Perimeter 28 <br/>2 Circles | Area 13,01 | Perimeter 18,06 <br/>3 Triangles | Area 49,64 | Perimeter 51,6 <br/>TOTAL:<br/>7 shapes Perimeter 97,66 Area 91,65",
-                resumen);
+                "<h1>Shapes report</h1>2 Squares | Area 29 | Perimeter 28 <br/>2 Circles | Area 52,03 | Perimeter 36,13 <br/>3 Triangles | Area 49,64 | Perimeter 51,6 <br/>1 Rectangle | Area 8 | Perimeter 12 <br/>1 Trapeze | Area 40 | Perimeter 23 <br/>TOTAL:<br/>9 shapes Perimeter 150,73 Area 178,67",
+                summary);
         }
 
         [TestCase]
-        public void TestResumenListaConMasTiposEnCastellano()
+        public void TestSummaryListWithMoreTypesInCastellano()
         {
-            var formas = new List<FormaGeometrica>
+            var geometricShapes = new List<GeometricShape>
             {
-                new FormaGeometrica(FormaGeometrica.Cuadrado, 5),
-                new FormaGeometrica(FormaGeometrica.Circulo, 3),
-                new FormaGeometrica(FormaGeometrica.TrianguloEquilatero, 4),
-                new FormaGeometrica(FormaGeometrica.Cuadrado, 2),
-                new FormaGeometrica(FormaGeometrica.TrianguloEquilatero, 9),
-                new FormaGeometrica(FormaGeometrica.Circulo, 2.75m),
-                new FormaGeometrica(FormaGeometrica.TrianguloEquilatero, 4.2m)
+                new Square(5),
+                new Circle(3),
+                new EquilateralTriangle(4),
+                new Square(2),
+                new EquilateralTriangle(9),
+                new Circle(2.75m),
+                new EquilateralTriangle(4.2m),
+                new Rectangle(4, 2),
+                new Trapeze(10, 6, 5, 4, 3)
             };
 
-            var resumen = FormaGeometrica.Imprimir(formas, FormaGeometrica.Castellano);
+            var summary = Print.PrintReport(geometricShapes, Language.CASTELLANO);
 
             Assert.AreEqual(
-                "<h1>Reporte de Formas</h1>2 Cuadrados | Area 29 | Perimetro 28 <br/>2 Círculos | Area 13,01 | Perimetro 18,06 <br/>3 Triángulos | Area 49,64 | Perimetro 51,6 <br/>TOTAL:<br/>7 formas Perimetro 97,66 Area 91,65",
-                resumen);
+                "<h1>Reporte de formas</h1>2 Cuadrados | Area 29 | Perimetro 28 <br/>2 Círculos | Area 52,03 | Perimetro 36,13 <br/>3 Triángulos | Area 49,64 | Perimetro 51,6 <br/>1 Rectangulo | Area 8 | Perimetro 12 <br/>1 Trapecio | Area 40 | Perimetro 23 <br/>TOTAL:<br/>9 formas Perimetro 150,73 Area 178,67",
+                summary);
         }
+
+        [TestCase]
+        public void TestSummaryListWithMoreTypesInItalian()
+        {
+            var geometricShapes = new List<GeometricShape>
+            {
+                new Square(5),
+                new Circle(3),
+                new EquilateralTriangle(4),
+                new Square(2),
+                new EquilateralTriangle(9),
+                new Circle(2.75m),
+                new EquilateralTriangle(4.2m),
+                new Rectangle(4, 2),
+                new Trapeze(10, 6, 5, 4, 3)
+            };
+
+            var summary = Print.PrintReport(geometricShapes, Language.ITALIAN);
+
+            Assert.AreEqual(
+                "<h1>Segnalazione dei moduli</h1>2 Piazze | Zona 29 | Perimetro 28 <br/>2 Cerchi | Zona 52,03 | Perimetro 36,13 <br/>3 Triangoli | Zona 49,64 | Perimetro 51,6 <br/>1 Rettangolo | Zona 8 | Perimetro 12 <br/>1 Trapezio | Zona 40 | Perimetro 23 <br/>TOTALE:<br/>9 forme Perimetro 150,73 Zona 178,67",
+                summary);
+        }
+        #endregion MoreTypes
     }
 }
