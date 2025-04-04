@@ -55,5 +55,12 @@ namespace DevelopmentChallenge.Data.Helpers
 
             return emptyListMessage.ToString();
         }
+
+        public static string GetCultureInfoName(JToken selectedLanguage)
+        {
+            var cultureInfoName = selectedLanguage["CultureInfo"]["Name"] ?? throw new KeyNotFoundException("CultureInfo not found");
+
+            return cultureInfoName.ToString();
+        }
     }
 }

@@ -41,7 +41,7 @@ namespace DevelopmentChallenge.Data.Tests
 
             var summary = Print.PrintReport(geometricShapes, Language.CASTELLANO);
 
-            Assert.AreEqual("<h1>Reporte de formas</h1>1 Cuadrado | Area 25 | Perimetro 20 <br/>TOTAL:<br/>1 forma Perimetro 20 Area 25", summary);
+            Assert.AreEqual("<h1>Reporte de formas</h1>1 Cuadrado | Area 25,00 | Perimetro 20,00 <br/>TOTAL:<br/>1 forma Perimetro 20,00 Area 25,00", summary);
         }
 
         [TestCase]
@@ -57,7 +57,7 @@ namespace DevelopmentChallenge.Data.Tests
 
             var summary = Print.PrintReport(geometricShapes, Language.ENGLISH);
 
-            Assert.AreEqual("<h1>Shapes report</h1>3 Squares | Area 35 | Perimeter 36 <br/>TOTAL:<br/>3 shapes Perimeter 36 Area 35", summary);
+            Assert.AreEqual("<h1>Shapes report</h1>3 Squares | Area 35.00 | Perimeter 36.00 <br/>TOTAL:<br/>3 shapes Perimeter 36.00 Area 35.00", summary);
         }
 
         [TestCase]
@@ -73,7 +73,7 @@ namespace DevelopmentChallenge.Data.Tests
 
             var summary = Print.PrintReport(geometricShapes, Language.ITALIAN);
 
-            Assert.AreEqual("<h1>Segnalazione dei moduli</h1>3 Piazze | Zona 35 | Perimetro 36 <br/>TOTALE:<br/>3 forme Perimetro 36 Zona 35", summary);
+            Assert.AreEqual("<h1>Segnalazione dei moduli</h1>3 Piazze | Zona 35,00 | Perimetro 36,00 <br/>TOTALE:<br/>3 forme Perimetro 36,00 Zona 35,00", summary);
         }
         #endregion Square
 
@@ -104,7 +104,7 @@ namespace DevelopmentChallenge.Data.Tests
             var summary = Print.PrintReport(geometricShapes, Language.ENGLISH);
 
             Assert.AreEqual(
-                "<h1>Shapes report</h1>2 Squares | Area 29 | Perimeter 28 <br/>2 Circles | Area 52,03 | Perimeter 36,13 <br/>3 Triangles | Area 49,64 | Perimeter 51,6 <br/>1 Rectangle | Area 8 | Perimeter 12 <br/>1 Trapeze | Area 40 | Perimeter 23 <br/>TOTAL:<br/>9 shapes Perimeter 150,73 Area 178,67",
+                "<h1>Shapes report</h1>2 Squares | Area 29.00 | Perimeter 28.00 <br/>2 Circles | Area 52.03 | Perimeter 36.13 <br/>3 Triangles | Area 49.64 | Perimeter 51.60 <br/>1 Rectangle | Area 8.00 | Perimeter 12.00 <br/>1 Trapeze | Area 40.00 | Perimeter 23.00 <br/>TOTAL:<br/>9 shapes Perimeter 150.73 Area 178.67",
                 summary);
         }
 
@@ -127,7 +127,7 @@ namespace DevelopmentChallenge.Data.Tests
             var summary = Print.PrintReport(geometricShapes, Language.CASTELLANO);
 
             Assert.AreEqual(
-                "<h1>Reporte de formas</h1>2 Cuadrados | Area 29 | Perimetro 28 <br/>2 Círculos | Area 52,03 | Perimetro 36,13 <br/>3 Triángulos | Area 49,64 | Perimetro 51,6 <br/>1 Rectangulo | Area 8 | Perimetro 12 <br/>1 Trapecio | Area 40 | Perimetro 23 <br/>TOTAL:<br/>9 formas Perimetro 150,73 Area 178,67",
+                "<h1>Reporte de formas</h1>2 Cuadrados | Area 29,00 | Perimetro 28,00 <br/>2 Círculos | Area 52,03 | Perimetro 36,13 <br/>3 Triángulos | Area 49,64 | Perimetro 51,60 <br/>1 Rectangulo | Area 8,00 | Perimetro 12,00 <br/>1 Trapecio | Area 40,00 | Perimetro 23,00 <br/>TOTAL:<br/>9 formas Perimetro 150,73 Area 178,67",
                 summary);
         }
 
@@ -150,7 +150,7 @@ namespace DevelopmentChallenge.Data.Tests
             var summary = Print.PrintReport(geometricShapes, Language.ITALIAN);
 
             Assert.AreEqual(
-                "<h1>Segnalazione dei moduli</h1>2 Piazze | Zona 29 | Perimetro 28 <br/>2 Cerchi | Zona 52,03 | Perimetro 36,13 <br/>3 Triangoli | Zona 49,64 | Perimetro 51,6 <br/>1 Rettangolo | Zona 8 | Perimetro 12 <br/>1 Trapezio | Zona 40 | Perimetro 23 <br/>TOTALE:<br/>9 forme Perimetro 150,73 Zona 178,67",
+                "<h1>Segnalazione dei moduli</h1>2 Piazze | Zona 29,00 | Perimetro 28,00 <br/>2 Cerchi | Zona 52,03 | Perimetro 36,13 <br/>3 Triangoli | Zona 49,64 | Perimetro 51,60 <br/>1 Rettangolo | Zona 8,00 | Perimetro 12,00 <br/>1 Trapezio | Zona 40,00 | Perimetro 23,00 <br/>TOTALE:<br/>9 forme Perimetro 150,73 Zona 178,67",
                 summary);
         }
         #endregion MoreTypes

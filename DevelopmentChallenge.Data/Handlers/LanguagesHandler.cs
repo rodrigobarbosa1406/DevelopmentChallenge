@@ -1,5 +1,8 @@
 ﻿using DevelopmentChallenge.Data.Enums;
+using DevelopmentChallenge.Data.Helpers;
 using Newtonsoft.Json.Linq;
+using System;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 
@@ -38,6 +41,27 @@ namespace DevelopmentChallenge.Data.Handlers
             }
 
             return selectedLanguage;
+        }
+
+        public static CultureInfo GetCultureInfo(JToken selectedLanguage)
+        {
+            var cultureInfoName = TextGetter.GetCultureInfoName(selectedLanguage);
+
+            if (string.IsNullOrEmpty(cultureInfoName))
+                throw new ArgumentNullException(nameof(cultureInfoName), "Culture info name cannot be null or empty");
+            try
+            {
+                var cultures = CultureInfo.GetCultures(CultureTypes.AllCultures);
+
+                if (!cultures.Any(c => c.Name.Equals(cultureInfoName, StringComparison.OrdinalIgnoreCase)))
+                    throw new CultureNotFoundException($"Culture info '{cultureInfoName}' not found in the cultures list");
+
+                return new CultureInfo(cultureInfoName);
+            }
+            catch (CultureNotFoundException)
+            {
+                throw new CultureNotFoundException($"Culture info '{cultureInfoName}' not found");
+            }
         }
     }
 }

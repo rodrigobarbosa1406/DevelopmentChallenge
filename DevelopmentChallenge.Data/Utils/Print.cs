@@ -17,6 +17,7 @@ namespace DevelopmentChallenge.Data.Utils
                 throw new ArgumentOutOfRangeException("Language not supported");
 
             var selectedLanguage = LanguagesHandler.GetSelectedLanguage(language);
+            var cultureInfo = LanguagesHandler.GetCultureInfo(selectedLanguage);
 
             var sb = new StringBuilder();
 
@@ -56,7 +57,7 @@ namespace DevelopmentChallenge.Data.Utils
 
                     var shapeName = TextGetter.GetShapeName(selectedLanguage, shapeType, shapeQuantity);
 
-                    sb.Append($"{shapeQuantity} {shapeName} | {areaText} {shareArea:#.##} | {perimeterText} {sharePerimeter:#.##} <br/>");
+                    sb.Append($"{shapeQuantity} {shapeName} | {areaText} {shareArea.ToString("N2", cultureInfo.NumberFormat)} | {perimeterText} {sharePerimeter.ToString("N2", cultureInfo.NumberFormat)} <br/>");
                 });
                 #endregion Lines
 
@@ -68,8 +69,8 @@ namespace DevelopmentChallenge.Data.Utils
 
                 sb.Append($"{total}:<br/>");
                 sb.Append($"{geometricShapes.Count} {shape} ");
-                sb.Append($"{perimeterText} {totalPerimeter.ToString("#.##")} ");
-                sb.Append($"{areaText} {totalArea.ToString("#.##")}");
+                sb.Append($"{perimeterText} {totalPerimeter.ToString("N2", cultureInfo.NumberFormat)} ");
+                sb.Append($"{areaText} {totalArea.ToString("N2", cultureInfo.NumberFormat)}");
                 #endregion Footer
             }
 

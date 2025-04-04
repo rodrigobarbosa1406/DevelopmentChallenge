@@ -36,6 +36,9 @@
 				"Singular": "forma",
 				"Plural": "formas"
 			}
+		},
+		"CultureInfo": {
+			"Name": "es-ES"
 		}
 	},
 	"ENGLISH": {
@@ -75,6 +78,9 @@
 				"Singular": "shape",
 				"Plural": "shapes"
 			}
+		},
+		"CultureInfo": {
+			"Name": "en-US"
 		}
 	},
 	"ITALIAN": {
@@ -114,6 +120,9 @@
 				"Singular": "forma",
 				"Plural": "forme"
 			}
+		},
+		"CultureInfo": {
+			"Name": "it-IT"
 		}
 	}
 }
